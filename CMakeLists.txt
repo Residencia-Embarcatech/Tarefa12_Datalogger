@@ -36,7 +36,9 @@ pico_sdk_init()
 # Add executable. Default name is the project name, version 0.1
 add_subdirectory(lib/FatFs_SPI)   
 
-add_executable(Tarefa12 Tarefa12.c hw_config.c)
+include_directories( ${CMAKE_SOURCE_DIR}/lib )
+
+add_executable(Tarefa12 Tarefa12.c hw_config.c lib/ssd1306.c)
 
 pico_set_program_name(Tarefa12 "Tarefa12")
 pico_set_program_version(Tarefa12 "0.1")
@@ -52,6 +54,7 @@ target_link_libraries(Tarefa12
         hardware_clocks
         hardware_adc
         hardware_i2c
+        hardware_pwm
         )
 
 # Add the standard include files to the build
